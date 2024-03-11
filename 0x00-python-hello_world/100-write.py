@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import sys
 
 #writing to the standard error stream
