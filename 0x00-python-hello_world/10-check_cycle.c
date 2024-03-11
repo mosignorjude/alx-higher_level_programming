@@ -18,10 +18,11 @@ int check_cycle(listint_t *list)
 
 	if (list == NULL)
 		return (0);
-	while (current != NULL)
+	while (current != NULL && current->next != NULL)
 	{
-		current = current->next;
-		if (current == temp)
+		temp = temp->next;
+		current = current->next->next;
+		if (temp == current)
 			return (1);
 	}
 	return (0);
