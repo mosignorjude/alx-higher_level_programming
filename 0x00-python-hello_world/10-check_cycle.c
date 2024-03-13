@@ -10,19 +10,19 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *current;
-	listint_t *temp;
+	listint_t *trav_ptr; /*traversing pointer*/
+	listint_t *current;  /*pointer to the current node*/
 
+	trav_ptr = list;
 	current = list;
-	temp = current;
 
 	if (list == NULL)
 		return (0);
-	while (current != NULL && current->next != NULL)
+	while (trav_ptr != NULL && trav_ptr->next != NULL)
 	{
-		temp = temp->next;
-		current = current->next->next;
-		if (temp == current)
+		current = current->next;
+		trav_ptr = trav_ptr->next->next;
+		if (current == trav_ptr)
 			return (1);
 	}
 	return (0);
