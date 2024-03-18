@@ -1,37 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdnoreturn.h>
 #include "lists.h"
-
 /**
- * add_nodeint - adds a new node at the beginning of a linked list
- * @head: pointer to a pointer to the first node
- * @n: value of the integer in the node
- *
- * Return: address of the new node or NULL if it fails
+ * reverse_listint - reverses a listint_t linked list.
+ * @head: pointer to the head of the linked list
+ * Return: a pointer to the first node of the reversed list
  */
-listint_t *add_nodeint(listint_t **head, const int n)
+listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *new;
-	listint_t *current;
-
-	current = *head;
-
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
-
-	new->n = n;
-	new->next = NULL;
+	listint_t *temp, *nextNode;
 
 	if (*head == NULL)
-		*head = new;
-	else
+		return (NULL);
+
+	temp = *head;
+	*head = 0;
+	while (temp != NULL)
 	{
-		new->next = current;
-		current = new;
+		nextNode = temp->next;
+		temp->next = *head;
+		*head = temp;
+		temp = nextNode;
 	}
-	return (new);
+	return (*head);
 }
 
 /**
@@ -43,16 +34,19 @@ listint_t *add_nodeint(listint_t **head, const int n)
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *temp;
-	listint_t *current
+	listint_t *new;
 
 	if (*head == NULL)
 		return (1);
-    current = *head;
-	while (current != NULL)
+	new = *head;
+	if (reverse_listint(head) == NULL)
+		return (1);
+	while ((*head != NULL) && (new != NULL))
 	{
-		temp = add_nodeint(current, current->n);
-		current = current->next;
+		if ((*head)->n == new->n)
+			return (1);
+		*head = (*head)->next;
+		new = new->next;
 	}
-
+	return (0);
 }
