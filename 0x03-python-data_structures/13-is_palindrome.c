@@ -43,10 +43,10 @@ int is_palindrome(listint_t **head)
 		return (1);
 	while ((*head != NULL) && (new != NULL))
 	{
-		if ((*head)->n == new->n)
-			return (1);
+		if ((*head)->n != new->n)
+			return (0);
 		*head = (*head)->next;
 		new = new->next;
 	}
-	return (0);
+	return (1);
 }
