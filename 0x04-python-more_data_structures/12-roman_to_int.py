@@ -4,7 +4,7 @@ def roman_to_int(roman_string):
     num = 0
     total_num = 0
     prev_num = 0
-    if roman_string is none:
+    if roman_string is None:
         return 0
     for i in roman_string:
         if i in rm_dict:
