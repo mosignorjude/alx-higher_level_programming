@@ -10,4 +10,4 @@ def safe_print_list(my_list=[], x=0):
     except TypeError:
         print("Invalid input")
     print()
-    return(num)
+    return (num)
