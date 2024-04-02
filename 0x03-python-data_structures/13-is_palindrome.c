@@ -8,20 +8,22 @@
  */
 listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *temp, *nextNode;
+	listint_t *current, *nextNode;
+	listint_t *prev = NULL;
 
 	if (*head == NULL)
 		return (NULL);
 
-	temp = *head;
-	*head = 0;
-	while (temp != NULL)
+	current = *head;
+	while (current != NULL)
 	{
-		nextNode = temp->next;
-		temp->next = *head;
-		*head = temp;
-		temp = nextNode;
+		nextNode = current->next;/* temporarily store next node */
+		current->next = prev;/* changes the next value to the previous value */
+		prev = current;/* replace previous with current value */
+		/*successfully swapped next to become prev and prev to become current*/
+		current = nextNode;/* move to the next node*/
 	}
+	*head = prev;
 	return (*head);
 }
 
@@ -36,11 +38,11 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *new;
 
-	if (*head == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 	new = *head;
-	if (reverse_listint(head) == NULL)
-		return (1);
+	reverse_listint(&new);
+	print_listint(new);
 	while ((*head != NULL) && (new != NULL))
 	{
 		if ((*head)->n != new->n)
