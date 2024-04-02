@@ -38,6 +38,9 @@ class Square:
 
         len = self.__size
         width = len
+
+        if self.__size == 0:
+            print();
         for i in range(len):
             for j in range(width):
                 print("#", end="")
