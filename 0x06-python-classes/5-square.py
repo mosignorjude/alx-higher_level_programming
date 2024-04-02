@@ -33,3 +33,12 @@ class Square:
         """
         return (self.__size * self.__size)
 
+    def my_print(self):
+        """Prints a square using #."""
+
+        len = self.__size
+        width = len
+        for i in range(len):
+            for j in range(width):
+                print("#", end="")
+            print()
