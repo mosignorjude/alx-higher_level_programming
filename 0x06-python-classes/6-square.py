@@ -38,10 +38,10 @@ class Square:
         """Initialize a new square.
         Args:
             size (int): The size of the new square.
-            position (tuple): position
+            position (int, int): position of the new square
         """
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     def area(self):
         """Calculates the area of the square.
