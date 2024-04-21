@@ -68,10 +68,9 @@ class Rectangle:
             return ("")
 
         rect = []
-        for height in range(self.__height):
-            for width in range(self.__width):
-                rect.append('#')
-                if height != self.__height - 1:
-                    rect.append('\n')
+        for h in range(self.__height):
+            [rect.append('#') for w in range(self.__width)]
+            if h != self.__height - 1:
+                rect.append('\n')
         # convert the list to a single printable string using .join()
         return ("".join(rect))
