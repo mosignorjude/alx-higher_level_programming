@@ -103,3 +103,20 @@ class Rectangle(Base):
         for h in range(self.__height):
             rect_str = (" " * self.__x) + ("#" * self.__width)
             print(rect_str)
+
+    def update(self, *args, **kwargs):
+        """Updates the class attributes.
+        Assigns an argument to each attribute.
+        """
+        if len(args) == 0:
+            for key, val in kwargs.items():
+                self.__setattr__(key, val)
+            return
+        try:
+            self.id = args[0]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
+        except IndexError:
+            pass
