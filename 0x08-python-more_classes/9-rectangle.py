@@ -12,11 +12,21 @@ class Rectangle:
     number_of_instances = 0
     print_symbol = "#"
 
+    @classmethod
+    def square(cls, size=0):
+        """Returns a new rectangle instance.
+        Rectangles width == height == size.
+
+        Attributes:
+            size (int): size of the square.
+        """
+        return (Rectangle(size, size))
+
     def __init__(self, width=0, height=0):
         """Initializes a rectangle
         Args:
-            width(int): width of the rectangle
-            height(int): height of the rectangle
+            width (int): width of the rectangle
+            height (int): height of the rectangle
         """
         self.width = width
         self.height = height
@@ -69,7 +79,7 @@ class Rectangle:
 
     def __str__(self):
         """Returns printable representation of the rectangle
-        prints the rectangle with the character
+        prints the rectangle with the character #
         """
 
         if self.__width == 0 or self.__height == 0:
