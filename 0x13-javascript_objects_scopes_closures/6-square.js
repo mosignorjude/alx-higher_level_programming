@@ -4,7 +4,7 @@ module.exports = class Square extends parentSqr {
   charPrint (c) {
     let sqr = '';
     for (let i = 0; i < this.width; i++) {
-      if (c === undefined) {
+      if (typeof (c) === 'undefined') {
         sqr += 'X';
       } else {
         sqr += 'C';
