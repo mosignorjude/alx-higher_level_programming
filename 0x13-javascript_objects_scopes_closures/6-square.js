@@ -7,7 +7,7 @@ module.exports = class Square extends parentSqr {
       if (typeof (c) === 'undefined') {
         sqr += 'X';
       } else {
-        sqr += 'C';
+        sqr += c;
       }
     }
     for (let j = 0; j < this.height; j++) {
