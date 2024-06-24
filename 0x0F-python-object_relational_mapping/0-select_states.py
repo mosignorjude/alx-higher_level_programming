@@ -4,7 +4,7 @@ import MySQLdb
 import sys
 
 if __name__ == '__main__':
-    mydb = MySQLdb.Connect(
+    mydb = MySQLdb.connect(
         host='localhost',
         user=sys.argv[1],
         passwd=sys.argv[2],
