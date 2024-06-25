@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 """
-Takes in an argument and displays all values in the states
-table of hbtn_0e_0_usa where name matches the argument.
+script that takes in an argument and displays all values in the
+states table of hbtn_0e_0_usa where name matches the argument.
 """
+
 import MySQLdb
 import sys
 
+
 if __name__ == '__main__':
-    # creates a connection object using database credentials.
-    mydb = MySQLdb.connect(
+
+    db = MySQLdb.connect(
         host='localhost',
         user=sys.argv[1],
         passwd=sys.argv[2],
@@ -17,18 +19,13 @@ if __name__ == '__main__':
     )
     state_name = sys.argv[4]
 
-    # creates a cursor object to execute queries.
-    cur = mydb.cursor()
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '%{}%'\
+    ORDER BY states.id ASC".format(state_name))
+    table = cur.fetchall()
 
-    query = "SELECT * FROM states WHERE name = '%{}%'\
-    ORDER BY states.id ASC".format(state_name)
-    cur.execute(query)
-
-    # fetches result.
-    rows = cur.fetchall()
-
-    for row in rows:
+    for row in table:
         print(row)
 
     cur.close()
-    mydb.close()
+    db.close()
