@@ -11,8 +11,9 @@ if __name__ == '__main__':
 
     request = urllib.request.Request(sys.argv[1])
     with urllib.request.urlopen(request) as response:
-        headers = response.headers
+        print(dict(response.headers).get("X-Request-Id"))
+        # headers = response.headers
         # convert headers to dictionary for easier access
-        h_dict = dict(headers)
-        h_var = h_dict['X-Request-Id']
-        print(h_var)
+        # h_dict = dict(headers)
+        # h_var = h_dict['X-Request-Id']
+        # print(h_var)
