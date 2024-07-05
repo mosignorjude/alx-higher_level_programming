@@ -8,8 +8,9 @@ if __name__ == '__main__':
     import urllib.request
     import sys
 
-    with urllib.request.urlopen(sys.argv[1]) as response:
-        headers = response.getheaders()
+    request = urllib.request.Request(sys.argv[1])
+    with urllib.request.urlopen(request) as response:
+        headers = response.headers
         # convert headers to dictionary for easier access
         h_dict = dict(headers)
         h_var = h_dict['X-Request-Id']
