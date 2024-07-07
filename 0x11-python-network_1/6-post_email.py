@@ -10,7 +10,6 @@ import sys
 if __name__ == '__main__':
     url = sys.argv[1]
     email_value = sys.argv[2]
-    data = {'email': email_value}
-    r = requests.get(url, params=data)
+    r = requests.post(url, data={'email': email_value})
     content = r.text
     print(content)
