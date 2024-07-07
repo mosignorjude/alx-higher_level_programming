@@ -13,4 +13,4 @@ if __name__ == '__main__':
     data = {'email': email_value}
     r = requests.get(url, data)
     content = r.text
-    print(content)
+    print('Your email is: {}'.format(content))
